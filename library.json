@@ -1,0 +1,16 @@
+{
+    "name": "BLEHandler",
+    "version": "0.1.0",
+    "description": "Librería para manejar la comunicación BLE",
+    "keywords": ["BLEHandler"],
+    "authors": [
+      {
+        "name": "Ignacio Peñaloza",
+        "email": "nacho.penialoza.18@gmail.com"
+      }
+    ],
+    "license": "MIT",
+    "frameworks": "arduino",
+    "platforms": "espressif32"
+  }
+  
