@@ -1,3 +1,15 @@
+/**
+ * @file BLEHandler.cpp
+ * @author  Ignacio Peñaloza
+ * @brief  
+ * @version 0.1
+ * @date 2025-06-23
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
+
 #include <Arduino.h>
 #include "BLEHandler.h"
 
@@ -166,14 +178,7 @@ void BLEHandler::notify(const char* characteristicUUID, const uint8_t* data, siz
 void BLEHandler::notify(const char* characteristicUUID, const std::string& value) {
     notify(characteristicUUID, reinterpret_cast<const uint8_t*>(value.data()), value.length());
 }
-void BLEHandler::notify(const char* characteristicUUID, int value) {
-    notify(characteristicUUID, std::to_string(value));
-}
 
-void BLEHandler::notify(const char* characteristicUUID, float value) {
-    notify(characteristicUUID, std::to_string(value));
-}
-
-void BLEHandler::notify(const char* characteristicUUID, uint32_t value) {
-    notify(characteristicUUID, std::to_string(value));
+void BLEHandler::notify(const char* characteristicUUID, const char* value) {
+    notify(characteristicUUID, std::string(value));
 }

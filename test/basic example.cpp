@@ -1,3 +1,12 @@
+/**
+ * @file basic example.cpp
+ * @author Ignacio Peñaloza 
+ * @brief  is a  basic example of how to use the BLEHandler class to create a BLE service and send notifications.
+ * @version 0.1
+ * @date 2025-06-23
+ * 
+ */
+
 #include <Arduino.h> // Include Arduino core library 
 #include "BLEHandler.h" // Include the BLEHandler class header
 

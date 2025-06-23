@@ -1,10 +1,15 @@
-/* * BLEHandler.h
+/** 
+ *  @file BLEHandler.h
+ *  @author Ignacio Peñaloza
+ *  @brief BLEHandler is a class that simplifies the creation and management of BLE services and characteristics.
+ *  It provides methods to initialize the BLE server, add services and characteristics, start advertising,
+ *  and send notifications to connected clients.
  * 
- * This file is part of the BLEHandler library for managing BLE services and characteristics.
- * It provides methods to initialize the BLE server, add services and characteristics, and notify connected clients.
+ *  @version 0.1
+ *  @date 2025-06-23
+ *  @note This class is designed to be used with the NimBLE library for ESP32.
  * 
- * Created by Ignacio Peñaloza on 19 jun. 2025.
- */
+*/
 
 #pragma once
 
@@ -66,22 +71,21 @@ class BLEHandler {
      * @brief overloaded notify function to send a string value.
      */
     void notify(const char* characteristicUUID, const std::string& value);
+
+    /**
+     * @brief overloaded notify function to send a const char value.
+     */
+    void notify(const char* characteristicUUID, const char* value); 
+
     
     /**
      * @brief overloaded notify function to send an integer value.
+     *
+     * @param characteristicUUID is the UUID of the characteristic to notify.
+     * @param value is the integer value to be sent.
      */
-    void notify(const char* characteristicUUID, int value);
-    
-    /**
-     * @brief overloaded notify function to send a float value.
-     */
-    void notify(const char* characteristicUUID, float value);
-
-    /**
-     * @brief overloaded notify function to send a uint32_t value.
-     */
-    void notify(const char* characteristicUUID, uint32_t value);
-
+    template<typename T>
+    void notify(const char* characteristicUUID, T value); 
     
     /**
      * @brief Checks if a client is connected to the BLE server.
@@ -141,3 +145,16 @@ class BLEHandler {
             
     };
 };
+
+/**
+ * @brief   Overloaded notify function to send a value of type T.
+ * 
+ * @tparam T numeber type (e.g., int, float, etc.)
+ * @param characteristicUUID   is the UUID of the characteristic to notify.
+ * @param value   is the value to be sent.
+ * This function converts the value to a string and calls the notify function with the string value.
+ */
+template<typename T>
+void BLEHandler::notify(const char* characteristicUUID, T value) {
+    notify(characteristicUUID, std::to_string(value));
+}

@@ -1,6 +1,6 @@
 {
     "name": "BLEHandler",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Librería para manejar la comunicación BLE",
     "keywords": ["BLEHandler"],
     "authors": [
