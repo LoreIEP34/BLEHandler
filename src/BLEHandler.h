@@ -77,7 +77,11 @@ class BLEHandler {
      */
     void notify(const char* characteristicUUID, const char* value); 
 
-    
+    /**
+    * @brief overloaded notify function to send an Arduino String value.
+    */
+    void notify(const char* characteristicUUID, const String& value);  
+
     /**
      * @brief overloaded notify function to send an integer value.
      *
@@ -156,5 +160,6 @@ class BLEHandler {
  */
 template<typename T>
 void BLEHandler::notify(const char* characteristicUUID, T value) {
-    notify(characteristicUUID, std::to_string(value));
+    notify(characteristicUUID, String(value));
 }
+

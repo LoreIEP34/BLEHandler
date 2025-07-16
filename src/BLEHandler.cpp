@@ -182,3 +182,8 @@ void BLEHandler::notify(const char* characteristicUUID, const std::string& value
 void BLEHandler::notify(const char* characteristicUUID, const char* value) {
     notify(characteristicUUID, std::string(value));
 }
+
+void BLEHandler::notify(const char* characteristicUUID, const String& value) {
+    notify(characteristicUUID, value.c_str()); 
+}
+
